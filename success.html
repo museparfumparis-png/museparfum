@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MUSE — Commande confirmée</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Jost',sans-serif;background:#FAF6F0;color:#1A1008;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;}
+.card{max-width:500px;width:100%;text-align:center;padding:60px 40px;background:#fff;box-shadow:0 4px 30px rgba(0,0,0,0.06);}
+h1{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:#C9A84C;letter-spacing:0.25em;margin-bottom:6px;}
+.tag{font-size:0.62rem;letter-spacing:0.3em;text-transform:uppercase;color:#C9A84C;margin-bottom:32px;display:block;}
+.msg{font-size:0.84rem;line-height:1.9;color:#3D2B1F;margin-bottom:24px;}
+.box{border-left:3px solid #C9A84C;padding:14px 20px;background:rgba(201,168,76,0.05);text-align:left;margin-bottom:28px;}
+.box p{font-size:0.78rem;line-height:1.9;color:#3D2B1F;}
+.box p span{color:#C9A84C;font-weight:600;}
+.note{font-size:0.72rem;color:#9e8e7e;font-style:italic;margin-bottom:28px;line-height:1.6;}
+.back{display:inline-block;background:#C9A84C;color:#fff;padding:14px 32px;font-size:0.65rem;font-weight:600;letter-spacing:0.22em;text-transform:uppercase;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>MUSE</h1>
+  <span class="tag">Pré-commande confirmée ✦</span>
+  <p class="msg">
+    Merci pour votre confiance.<br>
+    Vous allez recevoir un <strong>reçu de votre paiement</strong> par email.
+  </p>
+  <div class="box">
+    <p>✦ &nbsp;Votre pré-commande est bien enregistrée.</p>
+    <p>📦 &nbsp;Votre parfum sera expédié dès le : <span>16 juin 2026</span></p>
+    <p id="delay-line" style="display:none;">🚚 &nbsp;Délai de livraison estimé : <span id="delay-val"></span></p>
+    <p id="ship-line" style="display:none;">✉️ &nbsp;Mode : <span id="ship-val"></span></p>
+  </div>
+  <p class="note">Le reçu de votre paiement vous sera envoyé automatiquement par Stripe sur votre adresse email.</p>
+  <a href="/" class="back">Retour au site</a>
+</div>
+<script>
+var params=new URLSearchParams(window.location.search);
+var delay=params.get('delay');
+var ship=params.get('ship');
+if(delay){document.getElementById('delay-line').style.display='block';document.getElementById('delay-val').textContent=delay+' après expédition';}
+if(ship){document.getElementById('ship-line').style.display='block';document.getElementById('ship-val').textContent=decodeURIComponent(ship);}
+</script>
+</body>
+</html>
